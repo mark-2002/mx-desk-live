@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MX-DESK Portfolio</title>
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#120E1D; color:#EDE9F5; font-family:"Segoe UI",system-ui,sans-serif; padding:16px; }
+    .header { display:flex; align-items:center; gap:14px; padding:8px 0 18px; border-bottom:1px solid #2A2140; margin-bottom:16px; }
+    .header img { width:52px; height:auto; filter: drop-shadow(0 1px 6px rgba(207,164,86,0.25)); }
+    .md-title { font-size:20px; font-weight:800; letter-spacing:2px;
+        background:linear-gradient(180deg,#E8CB8B,#CFA456 55%,#A9853F);
+        -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .md-sub { color:#9C8FBC; font-size:12px; margin-top:2px; }
+    .badge { display:inline-block; background:#1a3a2a; color:#3FB68B; padding:4px 12px;
+        border-radius:12px; font-size:11px; font-weight:600; border:1px solid #3FB68B33; }
+    .kpi-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+    .kpi-card { flex:1 1 130px; min-width:130px; background:#1D1630; border:1px solid #2A2140;
+        border-radius:12px; padding:12px 14px; }
+    .kpi-label { color:#CFA456; font-size:10px; font-weight:600; text-transform:uppercase;
+        letter-spacing:0.8px; margin-bottom:4px; }
+    .kpi-value { color:#EDE9F5; font-size:22px; font-weight:700; }
+    .kpi-delta { color:#9C8FBC; font-size:11px; margin-top:3px; }
+    .section { background:#1D1630; border:1px solid #2A2140; border-radius:12px;
+        padding:16px 18px; margin-bottom:14px; }
+    .section h3 { color:#CFA456; font-size:13px; font-weight:600; text-transform:uppercase;
+        letter-spacing:0.5px; margin-bottom:12px; }
+    table { width:100%; border-collapse:collapse; }
+    th { background:#1D1630; color:#CFA456; font-size:10px; text-transform:uppercase;
+        letter-spacing:0.5px; text-align:left; padding:8px 10px;
+        border-bottom:1px solid #2A2140; position:sticky; top:0; }
+    td { padding:6px 10px; border-bottom:1px solid #241C38; font-size:13px; }
+    tr:hover td { background:#241C38; }
+    .alloc-bar { display:flex; align-items:center; margin:4px 0; }
+    .footer { color:#6B6485; font-size:11px; text-align:center; padding:20px 0 10px;
+        border-top:1px solid #2A2140; margin-top:16px; }
+    @media(max-width:600px) {
+        .kpi-card { min-width:100%; }
+        .header { flex-direction:column; align-items:flex-start; }
+        table { font-size:11px; }
+        td, th { padding:4px 6px; }
+    }
+</style>
+</head>
+<body>
+<div class="header">
+    <img src="assets/logo/logo_navy.png" alt="MX FINANCE" style="background:#fff;padding:6px;border-radius:10px;">
+    <div>
+        <div class="md-title">MX-DESK</div>
+        <div class="md-sub">Total Portfolio Mark-to-Market</div>
+    </div>
+    <div style="margin-left:auto;" class="badge">● LIVE</div>
+</div>
+
+<div class="kpi-row">
+    <div class="kpi-card">
+        <div class="kpi-label">Total Value</div>
+        <div class="kpi-value">11,589,943</div>
+        <div class="kpi-delta">23 positions · 3 markets</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Total Cost</div>
+        <div class="kpi-value">10,684,098</div>
+        <div class="kpi-delta">capital deployed</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Total P&L</div>
+        <div class="kpi-value" style="color:#3FB68B;">+905,845</div>
+        <div class="kpi-delta">+8.48% on cost</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Data As Of</div>
+        <div class="kpi-value" style="font-size:14px;">2026-08-28 09:50 UTC</div>
+        <div class="kpi-delta">auto-refresh 5 min</div>
+    </div>
+</div>
+
+<div class="kpi-row">
+        <div class="kpi-card" style="border-top:3px solid #CFA456;">
+            <div class="kpi-label">CRYPTO</div>
+            <div class="kpi-value">570</div>
+            <div class="kpi-delta" style="color:#3FB68B;">+0 P&L · 1 positions</div>
+        </div>
+        <div class="kpi-card" style="border-top:3px solid #3FB68B;">
+            <div class="kpi-label">NGX</div>
+            <div class="kpi-value">11,580,766</div>
+            <div class="kpi-delta" style="color:#3FB68B;">+897,702 P&L · 17 positions</div>
+        </div>
+        <div class="kpi-card" style="border-top:3px solid #5B9BD5;">
+            <div class="kpi-label">US</div>
+            <div class="kpi-value">8,607</div>
+            <div class="kpi-delta" style="color:#3FB68B;">+7,752 P&L · 5 positions</div>
+        </div></div>
+
+<div class="section">
+    <h3>Asset Allocation</h3>
+    
+        <div style="display:flex;align-items:center;margin:4px 0;">
+            <div style="width:130px;font-size:12px;color:#9C8FBC;text-align:right;padding-right:10px;">NGX</div>
+            <div style="flex:1;background:#241C38;border-radius:4px;height:16px;overflow:hidden;">
+                <div style="width:99.9%;background:#3FB68B;height:100%;border-radius:4px;"></div>
+            </div>
+            <div style="width:70px;font-size:12px;color:#EDE9F5;padding-left:8px;text-align:right;">99.9%</div>
+        </div>
+        <div style="display:flex;align-items:center;margin:4px 0;">
+            <div style="width:130px;font-size:12px;color:#9C8FBC;text-align:right;padding-right:10px;">US</div>
+            <div style="flex:1;background:#241C38;border-radius:4px;height:16px;overflow:hidden;">
+                <div style="width:0.1%;background:#CFA456;height:100%;border-radius:4px;"></div>
+            </div>
+            <div style="width:70px;font-size:12px;color:#EDE9F5;padding-left:8px;text-align:right;">0.1%</div>
+        </div>
+        <div style="display:flex;align-items:center;margin:4px 0;">
+            <div style="width:130px;font-size:12px;color:#9C8FBC;text-align:right;padding-right:10px;">CRYPTO</div>
+            <div style="flex:1;background:#241C38;border-radius:4px;height:16px;overflow:hidden;">
+                <div style="width:0.0%;background:#7B68EE;height:100%;border-radius:4px;"></div>
+            </div>
+            <div style="width:70px;font-size:12px;color:#EDE9F5;padding-left:8px;text-align:right;">0.0%</div>
+        </div>
+</div>
+
+<div class="section">
+    <h3>All Positions</h3>
+    <div style="overflow-x:auto;">
+    <table>
+        <thead><tr>
+            <th>Ticker</th><th>Market</th><th>Side</th>
+            <th style="text-align:right;">Qty</th><th style="text-align:right;">Avg Cost</th>
+            <th style="text-align:right;">Price</th><th style="text-align:right;">Value</th>
+            <th style="text-align:right;">P&L</th><th style="text-align:right;">P&L %</th>
+            <th>Flags</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">PUMPUSDT</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">CRYPTO</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">168,800</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">0.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">-</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">570</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+0</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.00%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ACCESS</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">1,073</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">25.37</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦26.95</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">28,917</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+1,695</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+6.23%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ARADEL</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">3,669</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">1,387.21</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦1,526.80</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">5,601,829</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+512,156</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+10.06%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">CHAMPION</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">3,200</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">16.10</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦10.50</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">33,600</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-17,920</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;">-34.78%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">CONHALL</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">1,520</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">3.60</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦6.98</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">10,610</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+5,138</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+93.89%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">DANGSUGAR</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">291</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">36.35</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦73.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">21,243</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+10,665</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+100.83%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ETI</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">570</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">36.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦72.10</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">41,097</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+20,577</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+100.28%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">LEARNAFRICA</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">6,519</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">7.95</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦9.65</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">62,908</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+11,082</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+21.38%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">LINKASSURE</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">60,000</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">1.75</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦1.77</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">106,200</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+1,200</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+1.14%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">MTNN</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">6,110</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">813.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦845.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">5,162,950</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+195,520</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+3.94%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">MULTIVERSE</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">2,500</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">20.50</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦21.30</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">53,250</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+2,000</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+3.90%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">NESTLE</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">25</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">1,958.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦2,750.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">68,750</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+19,800</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+40.45%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">NNFM</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">1,300</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">74.18</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦79.40</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">103,220</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+6,786</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+7.04%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">TIP</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">5,000</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">9.50</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦27.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">135,000</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+87,500</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+184.21%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">TRANSPWR</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">15</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">336.60</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦219.60</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">3,294</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-1,755</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;">-34.76%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">UBA</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">25</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">49.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦44.90</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">1,122</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-102</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;">-8.37%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">UPDCREIT</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">6,500</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">7.91</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦13.75</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">89,375</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+37,960</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+73.83%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">WEMA</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">2,000</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">26.00</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">₦28.70</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">57,400</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+5,400</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+10.38%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">MU</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">0</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">930.77</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">$938.40</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">181</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+1</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.82%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">NFLX</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#4a2d3e;color:#E0565F">CALL</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">1</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">2.85</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">$81.46</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">8,146</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+7,861</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+2758.25%</td>
+            <td style="padding:6px 10px;font-size:10px;"><span style="color:#CFA456;font-size:10px;">⚠ near BuySide 82.24</span></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ONDS</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">20</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">9.01</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">-</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">180</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+0</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.00%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ONDS</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#4a2d3e;color:#E0565F">CALL</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">1</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">1.10</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">-</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">0</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-110</td>
+            <td style="padding:6px 10px;color:#E0565F;text-align:right;">-100.00%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr>
+        <tr>
+            <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">SLKE</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
+            <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">3</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">34.54</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">-</td>
+            <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">100</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+0</td>
+            <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.00%</td>
+            <td style="padding:6px 10px;font-size:10px;"></td>
+        </tr></tbody>
+    </table>
+    </div>
+</div>
+
+<div class="footer">
+    MX-DESK Portfolio Dashboard · Data from desk.db · Auto-refreshes every 5 min<br>
+    Non-advisory. For informational purposes only.
+</div>
+
+<script>
+// auto-refresh every 5 minutes
+setTimeout(function() { location.reload(); }, 300000);
+</script>
+</body>
+</html>

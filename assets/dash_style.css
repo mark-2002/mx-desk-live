@@ -1,0 +1,125 @@
+/* MARKSON DESK - Dash theme (PLAN3 s7.6): purple/gold chrome, dark canvas.
+   Brand colors live on chrome only; data tables keep green/red semantics. */
+
+:root {
+    --md-bg: #120E1D;
+    --md-panel: #1D1630;
+    --md-panel-2: #171126;
+    --md-border: #2A2140;
+    --md-text: #EDE9F5;
+    --md-muted: #9C8FBC;
+    --md-purple: #2D1A47;
+    --md-gold: #CFA456;
+    --md-green: #3FB68B;
+    --md-red: #E0565F;
+}
+
+body {
+    background: var(--md-bg);
+    color: var(--md-text);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin: 0;
+}
+
+.md-root { position: relative; max-width: 1500px; margin: 0 auto;
+    padding: 18px 28px 40px; }
+
+.md-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 10px 4px 16px;
+    border-bottom: 1px solid var(--md-border);
+    margin-bottom: 14px;
+}
+.md-mark { width: 52px; height: auto; }
+.md-title {
+    font-size: 26px; font-weight: 800; letter-spacing: 2.5px;
+    background: linear-gradient(180deg, #E8CB8B 0%, #CFA456 55%, #A9853F 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.md-subtitle { color: var(--md-muted); font-size: 13px; margin-top: 2px; }
+
+.md-tabs { border-bottom: 1px solid var(--md-border); margin-bottom: 16px; }
+.md-tabs [role="tab"] {
+    color: var(--md-muted) !important;
+    font-weight: 600; letter-spacing: 0.4px;
+    background: transparent !important;
+    border: none !important;
+    padding: 10px 18px !important;
+}
+.md-tabs [role="tab"][aria-selected="true"] {
+    color: var(--md-gold) !important;
+    border-bottom: 2px solid var(--md-gold) !important;
+}
+
+.md-refresh-row {
+    position: absolute; top: 22px; right: 30px;
+    display: flex; align-items: center; gap: 12px;
+}
+.md-refresh-btn {
+    background: var(--md-gold); color: var(--md-purple) !important;
+    border: none; border-radius: 8px; padding: 9px 18px;
+    font-weight: 700; letter-spacing: 0.6px; cursor: pointer;
+    font-family: "Segoe UI", sans-serif; font-size: 12.5px;
+}
+.md-refresh-btn:hover { filter: brightness(1.08); }
+.md-refresh-status { color: var(--md-muted); font-size: 12px; }
+
+.md-panel {
+    background: var(--md-panel);
+    border: 1px solid var(--md-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+}
+.md-tab { animation: none; }
+
+.md-kpi-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 8px 0 14px; }
+.md-kpi-card {
+    flex: 1 1 150px; min-width: 150px;
+    background: linear-gradient(160deg, var(--md-panel) 0%, var(--md-panel-2) 100%);
+    border: 1px solid var(--md-border); border-radius: 12px;
+    padding: 14px 18px;
+}
+.md-kpi-label {
+    color: var(--md-gold); font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
+}
+.md-kpi-value { color: var(--md-text); font-size: 24px; font-weight: 700; }
+.md-kpi-delta { color: var(--md-muted); font-size: 12px; margin-top: 4px; }
+
+.md-caption { color: var(--md-muted); font-size: 12.5px; margin: 8px 2px 14px; }
+.md-table-wrap {
+    background: var(--md-panel-2);
+    border: 1px solid var(--md-border); border-radius: 10px;
+    padding: 6px; overflow: hidden;
+}
+
+.md-dropdown { max-width: 340px; margin-bottom: 12px; }
+.md-window-radio { margin: 4px 0 8px; }
+.md-window-radio label {
+    color: var(--md-muted) !important; font-size: 13px;
+    border: 1px solid var(--md-border); border-radius: 8px;
+    padding: 4px 12px; margin-right: 6px; cursor: pointer;
+}
+.md-window-radio input { display: none; }
+.md-window-radio label:has(input:checked) {
+    color: var(--md-gold) !important; border-color: var(--md-gold);
+}
+
+.md-alert { border-radius: 10px; padding: 12px 16px; margin: 10px 0;
+    font-size: 13.5px; font-weight: 600; }
+.md-alert-error { background: #2A1520; border: 1px solid var(--md-red);
+    color: var(--md-red); }
+.md-alert-warn { background: #2A2415; border: 1px solid var(--md-gold);
+    color: var(--md-gold); }
+
+h4 { color: var(--md-gold); font-weight: 600; letter-spacing: 0.3px;
+     margin: 18px 0 10px; }
+
+/* dash_table chrome */
+.dash-table-container .dash-spreadsheet-container {
+    border-radius: 8px; overflow: hidden;
+}
+.previous-next-container { display: none; }

@@ -71,7 +71,7 @@
     </div>
     <div class="kpi-card">
         <div class="kpi-label">Data As Of</div>
-        <div class="kpi-value" style="font-size:14px;">2026-08-28 09:50 UTC</div>
+        <div class="kpi-value" style="font-size:14px;">2026-08-28 10:39 UTC</div>
         <div class="kpi-delta">auto-refresh 5 min</div>
     </div>
 </div>
@@ -120,30 +120,39 @@
 </div>
 
 <div class="section">
-    <h3>All Positions</h3>
+    <h3>All Positions <span style="font-weight:400;color:#9C8FBC;font-size:11px;">— filter by sleeve</span></h3>
+    <div style="margin-bottom:10px;">
+        <label style="font-size:11px;color:#9C8FBC;">Portfolio: </label>
+        <select id="pfFilter" onchange="filterPf()" style="background:#241C38;color:#EDE9F5;border:1px solid #2A2140;border-radius:6px;padding:6px 10px;">
+            <option value="ALL">ALL — Main + sleeves</option>
+            <option value="MAIN">MAIN</option>
+        </select>
+        <span id="pfCount" style="margin-left:10px;color:#9C8FBC;font-size:11px;"></span>
+    </div>
     <div style="overflow-x:auto;">
-    <table>
+    <table id="posTable">
         <thead><tr>
             <th>Ticker</th><th>Market</th><th>Side</th>
             <th style="text-align:right;">Qty</th><th style="text-align:right;">Avg Cost</th>
             <th style="text-align:right;">Price</th><th style="text-align:right;">Value</th>
             <th style="text-align:right;">P&L</th><th style="text-align:right;">P&L %</th>
-            <th>Flags</th>
+            <th>Portfolio</th><th>Flags</th>
         </tr></thead>
         <tbody>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">PUMPUSDT</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">CRYPTO</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">168,800</td>
-            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">0.00</td>
+            <td style="padding:6px 10px;color:#9C8FBC;text-align:right;">0.003375</td>
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;">-</td>
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">570</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+0</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.00%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ACCESS</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -153,9 +162,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">28,917</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+1,695</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+6.23%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ARADEL</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -165,9 +175,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">5,601,829</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+512,156</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+10.06%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">CHAMPION</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -177,9 +188,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">33,600</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-17,920</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;">-34.78%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">CONHALL</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -189,9 +201,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">10,610</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+5,138</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+93.89%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">DANGSUGAR</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -201,9 +214,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">21,243</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+10,665</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+100.83%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ETI</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -213,9 +227,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">41,097</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+20,577</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+100.28%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">LEARNAFRICA</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -225,9 +240,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">62,908</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+11,082</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+21.38%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">LINKASSURE</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -237,9 +253,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">106,200</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+1,200</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+1.14%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">MTNN</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -249,9 +266,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">5,162,950</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+195,520</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+3.94%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">MULTIVERSE</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -261,9 +279,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">53,250</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+2,000</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+3.90%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">NESTLE</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -273,9 +292,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">68,750</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+19,800</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+40.45%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">NNFM</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -285,9 +305,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">103,220</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+6,786</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+7.04%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">TIP</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -297,9 +318,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">135,000</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+87,500</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+184.21%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">TRANSPWR</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -309,9 +331,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">3,294</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-1,755</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;">-34.76%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">UBA</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -321,9 +344,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">1,122</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-102</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;">-8.37%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">UPDCREIT</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -333,9 +357,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">89,375</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+37,960</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+73.83%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">WEMA</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">NGX</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -345,9 +370,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">57,400</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+5,400</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+10.38%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">MU</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -357,9 +383,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">181</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+1</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.82%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">NFLX</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#4a2d3e;color:#E0565F">CALL</span></td>
@@ -369,9 +396,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">8,146</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+7,861</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+2758.25%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"><span style="color:#CFA456;font-size:10px;">⚠ near BuySide 82.24</span></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ONDS</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -381,9 +409,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">180</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+0</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.00%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">ONDS</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#4a2d3e;color:#E0565F">CALL</span></td>
@@ -393,9 +422,10 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">0</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;font-weight:600;">-110</td>
             <td style="padding:6px 10px;color:#E0565F;text-align:right;">-100.00%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr>
-        <tr>
+        <tr data-pf="MAIN">
             <td style="padding:6px 10px;color:#EDE9F5;font-weight:600;">SLKE</td>
             <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">US</td>
             <td style="padding:6px 10px;"><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:#2d4a3e;color:#3FB68B">STOCK</span></td>
@@ -405,11 +435,34 @@
             <td style="padding:6px 10px;color:#EDE9F5;text-align:right;font-weight:600;">100</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;font-weight:600;">+0</td>
             <td style="padding:6px 10px;color:#3FB68B;text-align:right;">+0.00%</td>
+            <td style="padding:6px 10px;color:#9C8FBC;font-size:11px;">MAIN</td>
             <td style="padding:6px 10px;font-size:10px;"></td>
         </tr></tbody>
     </table>
     </div>
 </div>
+<script>
+const _rowsData = [{"id": 28, "ticker": "PUMPUSDT", "market": "CRYPTO", "side": "stock", "qty": 168800.00000000003, "avg_cost": 0.003375, "opened_at": "2026-08-27T14:40:54.320826+00:00", "expiry": null, "strike": null, "role": "speculative", "notes": "spot, init cost 569.70 USDT", "updated_at": "2026-08-27T14:40:54.320826+00:00", "current_price": null, "current_value": 569.7, "pnl": 0.0, "pnl_pct": 0.0, "flags": ""}, {"id": 6, "ticker": "ACCESS", "market": "NGX", "side": "stock", "qty": 1073.0, "avg_cost": 25.37, "opened_at": "2026-08-27T14:40:53.741206+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.741206+00:00", "current_price": 26.95, "current_value": 28917.35, "pnl": 1695.34, "pnl_pct": 6.23, "flags": ""}, {"id": 12, "ticker": "ARADEL", "market": "NGX", "side": "stock", "qty": 3669.0, "avg_cost": 1387.21, "opened_at": "2026-08-27T14:40:53.924224+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.924224+00:00", "current_price": 1526.8, "current_value": 5601829.2, "pnl": 512155.71, "pnl_pct": 10.06, "flags": ""}, {"id": 10, "ticker": "CHAMPION", "market": "NGX", "side": "stock", "qty": 3200.0, "avg_cost": 16.1, "opened_at": "2026-08-27T14:40:53.856745+00:00", "expiry": null, "strike": null, "role": "speculative", "notes": "", "updated_at": "2026-08-27T14:40:53.856745+00:00", "current_price": 10.5, "current_value": 33600.0, "pnl": -17920.0, "pnl_pct": -34.78, "flags": ""}, {"id": 7, "ticker": "CONHALL", "market": "NGX", "side": "stock", "qty": 1520.0, "avg_cost": 3.6, "opened_at": "2026-08-27T14:40:53.769750+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.769750+00:00", "current_price": 6.98, "current_value": 10609.6, "pnl": 5137.6, "pnl_pct": 93.89, "flags": ""}, {"id": 15, "ticker": "DANGSUGAR", "market": "NGX", "side": "stock", "qty": 291.0, "avg_cost": 36.35, "opened_at": "2026-08-27T14:40:54.009770+00:00", "expiry": null, "strike": null, "role": "speculative", "notes": "", "updated_at": "2026-08-27T14:40:54.009770+00:00", "current_price": 73.0, "current_value": 21243.0, "pnl": 10665.15, "pnl_pct": 100.83, "flags": ""}, {"id": 17, "ticker": "ETI", "market": "NGX", "side": "stock", "qty": 570.0, "avg_cost": 36.0, "opened_at": "2026-08-27T14:40:54.074098+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:54.074098+00:00", "current_price": 72.1, "current_value": 41097.0, "pnl": 20577.0, "pnl_pct": 100.28, "flags": ""}, {"id": 21, "ticker": "LEARNAFRICA", "market": "NGX", "side": "stock", "qty": 6519.0, "avg_cost": 7.95, "opened_at": "2026-08-27T14:40:54.193388+00:00", "expiry": null, "strike": null, "role": "speculative", "notes": "", "updated_at": "2026-08-27T14:40:54.193388+00:00", "current_price": 9.65, "current_value": 62908.35, "pnl": 11082.3, "pnl_pct": 21.38, "flags": ""}, {"id": 14, "ticker": "LINKASSURE", "market": "NGX", "side": "stock", "qty": 60000.0, "avg_cost": 1.75, "opened_at": "2026-08-27T14:40:53.977160+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.977160+00:00", "current_price": 1.77, "current_value": 106200.0, "pnl": 1200.0, "pnl_pct": 1.14, "flags": ""}, {"id": 9, "ticker": "MTNN", "market": "NGX", "side": "stock", "qty": 6110.0, "avg_cost": 813.0, "opened_at": "2026-08-27T14:40:53.822543+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.822543+00:00", "current_price": 845.0, "current_value": 5162950.0, "pnl": 195520.0, "pnl_pct": 3.94, "flags": ""}, {"id": 16, "ticker": "MULTIVERSE", "market": "NGX", "side": "stock", "qty": 2500.0, "avg_cost": 20.5, "opened_at": "2026-08-27T14:40:54.038918+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:54.038918+00:00", "current_price": 21.3, "current_value": 53250.0, "pnl": 2000.0, "pnl_pct": 3.9, "flags": ""}, {"id": 19, "ticker": "NESTLE", "market": "NGX", "side": "stock", "qty": 25.0, "avg_cost": 1958.0, "opened_at": "2026-08-27T14:40:54.157844+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:54.157844+00:00", "current_price": 2750.0, "current_value": 68750.0, "pnl": 19800.0, "pnl_pct": 40.45, "flags": ""}, {"id": 20, "ticker": "NNFM", "market": "NGX", "side": "stock", "qty": 1300.0, "avg_cost": 74.18, "opened_at": "2026-08-27T14:40:54.178409+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:54.178409+00:00", "current_price": 79.4, "current_value": 103220.0, "pnl": 6786.0, "pnl_pct": 7.04, "flags": ""}, {"id": 8, "ticker": "TIP", "market": "NGX", "side": "stock", "qty": 5000.0, "avg_cost": 9.5, "opened_at": "2026-08-27T14:40:53.791254+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.791254+00:00", "current_price": 27.0, "current_value": 135000.0, "pnl": 87500.0, "pnl_pct": 184.21, "flags": ""}, {"id": 11, "ticker": "TRANSPWR", "market": "NGX", "side": "stock", "qty": 15.0, "avg_cost": 336.6, "opened_at": "2026-08-27T14:40:53.890481+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.890481+00:00", "current_price": 219.6, "current_value": 3294.0, "pnl": -1755.0, "pnl_pct": -34.76, "flags": ""}, {"id": 22, "ticker": "UBA", "market": "NGX", "side": "stock", "qty": 25.0, "avg_cost": 49.0, "opened_at": "2026-08-27T14:40:54.213901+00:00", "expiry": null, "strike": null, "role": "speculative", "notes": "", "updated_at": "2026-08-27T14:40:54.213901+00:00", "current_price": 44.9, "current_value": 1122.5, "pnl": -102.5, "pnl_pct": -8.37, "flags": ""}, {"id": 13, "ticker": "UPDCREIT", "market": "NGX", "side": "stock", "qty": 6500.0, "avg_cost": 7.91, "opened_at": "2026-08-27T14:40:53.954499+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:53.954499+00:00", "current_price": 13.75, "current_value": 89375.0, "pnl": 37960.0, "pnl_pct": 73.83, "flags": ""}, {"id": 18, "ticker": "WEMA", "market": "NGX", "side": "stock", "qty": 2000.0, "avg_cost": 26.0, "opened_at": "2026-08-27T14:40:54.110299+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:54.110299+00:00", "current_price": 28.7, "current_value": 57400.0, "pnl": 5400.0, "pnl_pct": 10.38, "flags": ""}, {"id": 23, "ticker": "MU", "market": "US", "side": "stock", "qty": 0.193389, "avg_cost": 930.77, "opened_at": "2026-08-27T14:40:54.229585+00:00", "expiry": null, "strike": null, "role": "core", "notes": "", "updated_at": "2026-08-27T14:40:54.229585+00:00", "current_price": 938.4000244140625, "current_value": 181.48, "pnl": 1.48, "pnl_pct": 0.82, "flags": ""}, {"id": 26, "ticker": "NFLX", "market": "US", "side": "call", "qty": 1.0, "avg_cost": 2.85, "opened_at": "2026-08-27T14:40:54.289860+00:00", "expiry": "2026-09-25", "strike": 83.0, "role": "speculative", "notes": "NFLX Sep25 83C - paid 401.68 CAD (~285 USD/contract)", "updated_at": "2026-08-27T14:40:54.289860+00:00", "current_price": 81.45999908447266, "current_value": 8146.0, "pnl": 7861.0, "pnl_pct": 2758.25, "flags": "near BuySide 82.24"}, {"id": 24, "ticker": "ONDS", "market": "US", "side": "stock", "qty": 20.0, "avg_cost": 9.01, "opened_at": "2026-08-27T14:40:54.251253+00:00", "expiry": null, "strike": null, "role": "speculative", "notes": "", "updated_at": "2026-08-27T14:40:54.251253+00:00", "current_price": null, "current_value": 180.2, "pnl": 0.0, "pnl_pct": 0.0, "flags": ""}, {"id": 27, "ticker": "ONDS", "market": "US", "side": "call", "qty": 1.0, "avg_cost": 1.1, "opened_at": "2026-08-27T14:40:54.306495+00:00", "expiry": "2026-11-20", "strike": 209.0, "role": "speculative", "notes": "ONDS Nov 209C - paid 155 CAD (~110 USD/contract)", "updated_at": "2026-08-27T14:40:54.306495+00:00", "current_price": null, "current_value": 0.0, "pnl": -110.0, "pnl_pct": -100.0, "flags": ""}, {"id": 25, "ticker": "SLKE", "market": "US", "side": "stock", "qty": 2.88496207, "avg_cost": 34.54, "opened_at": "2026-08-27T14:40:54.272284+00:00", "expiry": null, "strike": null, "role": "speculative", "notes": "", "updated_at": "2026-08-27T14:40:54.272284+00:00", "current_price": null, "current_value": 99.65, "pnl": 0.0, "pnl_pct": 0.0, "flags": ""}];
+function filterPf(){
+  const v=document.getElementById('pfFilter').value;
+  let shown=0;
+  document.querySelectorAll('#posTable tbody tr').forEach((tr,i)=>{
+    const pf=_rowsData[i]?.portfolio||'MAIN';
+    const ok=v==='ALL'||pf===v;
+    tr.style.display=ok?'':'none';
+    if(ok) shown++;
+  });
+  document.getElementById('pfCount').textContent= shown+' shown';
+}
+filterPf();
+// inject portfolio col (hidden data needs the 10th td)
+document.querySelectorAll('#posTable tbody tr').forEach((tr,i)=>{
+  const td=document.createElement('td');
+  td.style.cssText='padding:6px 10px;color:#9C8FBC;font-size:11px;';
+  td.textContent=_rowsData[i]?.portfolio||'MAIN';
+  tr.insertBefore(td, tr.children[9]);
+});
+</script>
 
 <div class="footer">
     MX-DESK Portfolio Dashboard · Data from desk.db · Auto-refreshes every 5 min<br>
